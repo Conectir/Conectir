@@ -11,7 +11,6 @@ const Home = () => {
 
   const [showFilters, setShowFilter] = React.useState(false);
 
-  console.log(showFilters)
   return(
       <section className='Home'>
         <main>

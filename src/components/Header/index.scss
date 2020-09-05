@@ -44,6 +44,10 @@
     &-selected {
       font-weight: bolder !important;
       color: var(--color-blue) !important;
+
+      img {
+        filter: invert(43%) sepia(67%) saturate(2340%) hue-rotate(191deg) brightness(103%) contrast(104%);
+      }
     }
   }
 

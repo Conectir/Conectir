@@ -17,11 +17,7 @@ const Equipos = ({activeFilters, toggleActiveFilters}) => {
     </div>
 
       <article className='Equipos__body'>
-        {data.map( () => {
-          return(
-            <Equipo />
-          )
-        })}
+        {data.map( (_, i) => <Equipo key={i}/> )}
       </article>
     </section>
   )

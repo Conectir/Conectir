@@ -20,8 +20,8 @@ const Filters = ({activeFilters, toggleActiveFilters}) => {
 
       <label className='filters__areas' htmlFor='areaEstudioFilter'>
         <h2 className='subtitle'>Área de estudio</h2>
-          <select required name='areaEstudio' id='areaEstudioFilter'>
-            <option selected disabled hidden value='DEFAULT'>Selecciona el área de estudio</option>
+          <select required name='areaEstudio' id='areaEstudioFilter' defaultValue='DEFAULT'>
+            <option disabled hidden value='DEFAULT'>Selecciona el área de estudio</option>
             <option>Diseño</option>
             <option>Desarrollo</option>
             <option>Audiovisual</option>
