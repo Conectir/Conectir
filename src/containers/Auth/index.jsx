@@ -1,14 +1,14 @@
 import React from 'react'
-import { useLocation } from 'wouter';
+import { useLocation } from 'wouter'
 
-const ACTIONS = {
-    SET_SIGNUP: 0,
-    SET_LOGGING: 1,
-}
+import './index.scss'
+
+const ACTIONS = { SET_SIGNUP: 0, SET_LOGGING: 1 }
+const USERMOCK = { name: "mock", lastName: "last", country: "Colombia", city: "Cali", instEmail: "correo@institucional.com", password: "2n439n3", study: "Ciencias Sociales", terms: true }
 
 export default function Auth() {
 
-    const [isSingUp, setSignUp] = React.useState(false)
+    const [isSingUp, setSignUp] = React.useState(true)
 
     const callback = action => {
         switch (action) {
@@ -19,19 +19,15 @@ export default function Auth() {
     }
 
     return <section className='Auth'>
-        {/*<img src="https://img.freepik.com/free-vector/man-multitasking-work_23-2148390869.jpg" alt="" />*/}
-        <aside>
-            <div className="row">
-                {isSingUp
-                    ? <SignUpForm callback={callback} />
-                    : <LogInForm callback={callback} />
-                }
-            </div>
+        <img src="https://image.freepik.com/vector-gratis/trabajo-equipo-negocios-resolver-acertijos-encontrar-ideas_4968-469.jpg" alt="" />
+        <aside>{
+            isSingUp
+                ? <SignUpForm callback={callback} />
+                : <LogInForm callback={callback} />
+        }
         </aside>
     </section>
 }
-
-const USERMOCK = { name: "mock", lastName: "last", country: "Colombia", city: "Cali", instEmail: "correo@institucional.com", password: "2n439n3", study: "Ciencias Sociales", terms: true }
 
 function LogInForm({ callback }) {
     const [, setLocation] = useLocation()
@@ -42,7 +38,7 @@ function LogInForm({ callback }) {
         temp[e.target.id] = e.target.value
         setInfo(temp)
     }
-    
+
     const onSubmit = e => {
         e.preventDefault && e.preventDefault()
         USERMOCK.instEmail = info.instEmail || USERMOCK.instEmail
@@ -54,14 +50,14 @@ function LogInForm({ callback }) {
 
     const changeToSignUp = _ => callback(ACTIONS.SET_SIGNUP)
 
-    return <>
-        <h3>Inicia Sesión</h3>
+    return <div className='loging'>
+        <h3 className='title'>Inicia Sesión</h3>
         <form onSubmit={onSubmit}>
             <label htmlFor='instEmail'>Correo</label>
-            <input id='instEmail' type='email' placeholder='Escribe aquí tu correo' required value={info.instEmail} onChange={handleChange}/>
+            <input id='instEmail' type='email' placeholder='Escribe aquí tu correo' required value={info.instEmail} onChange={handleChange} />
 
             <label htmlFor='password'>Contraseña</label>
-            <input id='password' type='password' placeholder='Escribe aquí tu contraseña' required value={info.password} onChange={handleChange}/>
+            <input id='password' type='password' placeholder='Escribe aquí tu contraseña' required value={info.password} onChange={handleChange} />
 
             <small>¿Olvidaste tu contraseña?</small>
             <button>Ingresar</button>
@@ -69,7 +65,7 @@ function LogInForm({ callback }) {
         <hr />
         <button onClick={onSubmit}>Continuar con Github</button>
         <p>¿No tienes cuenta? <strong onClick={changeToSignUp}>registrate aquí</strong></p>
-    </>
+    </div>
 }
 
 function SignUpForm({ callback }) {
@@ -82,7 +78,7 @@ function SignUpForm({ callback }) {
         : callback(ACTIONS.SET_LOGGING)
 
     const goForward = userChanges => {
-        const newUser = {...user, ...userChanges}
+        const newUser = { ...user, ...userChanges }
         setUser(newUser)
 
         if (step === 0) setStep(step + 1)
@@ -116,8 +112,8 @@ function BasicInfo({ actions }) {
         setInfo(temp)
     }
 
-    return <>
-        <h3>Información básica</h3>
+    return <div className='signUp basicInfo'>
+        <h3 className='title'>Información básica</h3>
         <p>Queremos verificar que seas una persona real, porfavor completa tu información</p>
         <label htmlFor='name'>Nombre</label>
         <input id='name' type='text' placeholder='Ej: Daniel' value={info.name} onChange={handleChange} />
@@ -131,9 +127,9 @@ function BasicInfo({ actions }) {
         <label htmlFor='city'>Ciudad</label>
         <input id='city' type='text' value={info.city} onChange={handleChange} />
 
-        <button onClick={actions.goBack}>Regresar</button>
+        <button className='border' onClick={actions.goBack}>Regresar</button>
         <button onClick={_ => actions.goForward(info)}>Continuar</button>
-    </>
+    </div>
 }
 
 function AcademicInfo({ actions }) {
@@ -146,18 +142,18 @@ function AcademicInfo({ actions }) {
 
     const handleChange = e => {
         let temp = { ...info }
-        temp[e.target.id] = e.target.hasOwnProperty('checked')? e.target.checked : e.target.value
+        temp[e.target.id] = e.target.hasOwnProperty('checked') ? e.target.checked : e.target.value
         setInfo(temp)
     }
 
-    return <>
-        <h3>Información académica</h3>
+    return <div className='signUp academicInfo'>
+        <h3 className='title'>Información académica</h3>
         <p>Queremos verificar que seas una persona real, porfavor completa tu información</p>
         <label htmlFor='instEmail'>Correo institucional</label>
-        <input id='instEmail' type='email' placeholder='tucorreo@institución.com' value={info.instEmail} onChange={handleChange}/>
+        <input id='instEmail' type='email' placeholder='tucorreo@institución.com' value={info.instEmail} onChange={handleChange} />
 
         <label htmlFor='password'>Contraseña</label>
-        <input id='password' type='password' placeholder='Escribe tu contraseña' value={info.password} onChange={handleChange}/>
+        <input id='password' type='password' placeholder='Escribe tu contraseña' value={info.password} onChange={handleChange} />
 
         <label htmlFor='study'>Escoge tu área principal de estudio</label>
         <select id='study' value={info.study} onChange={handleChange}>
@@ -167,10 +163,10 @@ function AcademicInfo({ actions }) {
             <option value="Ciencias Sociales">Ciencias Sociales</option>
         </select>
 
+        <input id='terms' type='checkbox' value={info.terms} onChange={handleChange} />
         <label htmlFor='terms'>Leí y acepto los Terminos y Condiciones</label>
-        <input id='terms' type='checkbox' value={info.terms} onChange={handleChange}/>
 
-        <button onClick={actions.goBack}>Regresar</button>
+        <button className='border' onClick={actions.goBack}>Regresar</button>
         <button onClick={_ => actions.goForward(info)}>Continuar</button>
-    </>
+    </div>
 }

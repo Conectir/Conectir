@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../assets/css/reset.scss';
-import '../../assets/css/vars.scss';
 import './index.scss';
 
 import BannerFindTeam from '../../components/BannerFindTeam';

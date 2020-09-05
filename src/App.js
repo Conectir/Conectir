@@ -1,9 +1,12 @@
 import React from 'react';
 import Home from './containers/Home';
-import Header from './components/Header';
 import Auth from './containers/Auth'
+import Header from './components/Header';
 
 import { Switch, Route } from 'wouter'
+
+import './assets/css/reset.scss';
+import './assets/css/vars.scss';
 
 function App() {
   return (

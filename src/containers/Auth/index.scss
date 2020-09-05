@@ -1,0 +1,100 @@
+.Auth {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+
+    img {
+        width: 50%;
+        object-fit: cover;
+    }
+
+    aside {
+        width: 50%;
+        display: flex;
+
+        & > div {
+            width: 400px;
+            margin: auto;
+        }
+
+        .loging{
+
+            small {
+                display: block;
+                width: 100%;
+                text-align: right;
+                margin-top: -10px;
+            }
+
+            form button {
+                margin-top: 20px;
+                background-color: var(--color-blue);
+                color: white;
+            }
+
+            hr {
+                opacity: .3;
+                margin: 30px 0;
+                position: relative;
+                overflow: visible;
+                padding: 1px;
+                background-color: #9c9c9c;
+                box-shadow: none;
+                border: none;
+
+                &::after, &::before {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    background-color: #9c9c9c;
+                    border-radius: 50%;
+
+                    border: solid 4px white;
+                }
+
+                &::after{
+                    width: 9px;
+                    height: 9px;
+                    background-color: white;
+                    border: none;
+                }
+            }
+
+            hr + button {
+                background-color: var(--color-black);
+                color: white;
+            }
+
+            button + p {
+                margin-top: 30px;
+                strong {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .signUp {
+            .title + p {
+                margin-top: -10px;
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 48%;
+                display: inline-block;
+            }
+
+            button + button {
+                margin-left: 4%;
+            }
+        }
+    }
+}
