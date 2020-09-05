@@ -13,8 +13,13 @@ const Header = () => {
 
   const location = useLocation()[0]
   const [showResponsive, setShowResponsive] = React.useState(false);
+  const [isHidden, setHidden] = React.useState(false)
 
   const getClassName = path => location === `/${path}` ? 'header__nav-selected' : ''
+
+  React.useEffect(() => {
+    setHidden(location === '/log')
+  }, [location])
 
   //Ancho | Width
   React.useEffect(() => {
@@ -37,7 +42,7 @@ const Header = () => {
     });
   }, [])
 
-
+  if (isHidden) return null
   return (
     <header className='header'>
       <Logo />
