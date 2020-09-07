@@ -81,7 +81,7 @@ function SignUpForm({ callback }) {
         const newUser = { ...user, ...userChanges }
         setUser(newUser)
 
-        if (step === 0) setStep(step + 1)
+        if (step < 2) setStep(step + 1)
         else registerUser(newUser)
     }
 
@@ -92,10 +92,37 @@ function SignUpForm({ callback }) {
 
     return <>
         {step === 0
-            ? <BasicInfo actions={{ goBack, goForward }} />
-            : <AcademicInfo actions={{ goBack, goForward }} />
+            ? <Identificate actions={{ goBack, goForward }} />
+            : step === 1 ? <BasicInfo actions={{ goBack, goForward }} />
+                : <AcademicInfo actions={{ goBack, goForward }} />
         }
     </>
+}
+
+function Identificate({ actions }) {
+    const [info, setInfo] = React.useState(undefined)
+
+    const selectFigure = _ => setInfo({ rol: 'Estudiante' })
+
+    return <div className='signUp identificate'>
+        <h3 className='title'>¿Con quien te identificas?</h3>
+        <p>Escoge  la opción de perfil que más  se ajuste a ti</p>
+
+        <div className="row">
+            <figure className={info? 'center active' : 'center'} onClick={selectFigure} >
+                <img src={process.env.PUBLIC_URL + '/iconos/Equipo.svg'} alt="estudiante" />
+                <p>Estudiante</p>
+            </figure>
+
+            <figure className='center' aria-disabled>
+                <img src={process.env.PUBLIC_URL + '/iconos/Equipo.svg'} alt="donante" />
+                <p>Donante</p>
+            </figure>
+        </div>
+
+        <button className='border' onClick={actions.goBack}>Regresar</button>
+        <button onClick={_ => actions.goForward(info)}>Continuar</button>
+    </div>
 }
 
 function BasicInfo({ actions }) {
@@ -154,6 +181,9 @@ function AcademicInfo({ actions }) {
 
         <label htmlFor='password'>Contraseña</label>
         <input id='password' type='password' placeholder='Escribe tu contraseña' value={info.password} onChange={handleChange} />
+
+        <label htmlFor='confirm'>Confirmar Contraseña</label>
+        <input id='confirm' type='password' placeholder='Confirma tu contraseña'/>
 
         <label htmlFor='study'>Escoge tu área principal de estudio</label>
         <select id='study' value={info.study} onChange={handleChange}>

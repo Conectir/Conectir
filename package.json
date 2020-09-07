@@ -1,6 +1,6 @@
 {
-  "name": "filtros-conectir",
-  "homepage": "http://eltranseunteurbano.github.io/FiltrosConectir",
+  "name": "conectir",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
