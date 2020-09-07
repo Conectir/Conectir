@@ -1,14 +1,10 @@
 export default [
 	{
 		"id": "0",
-		"name": "Computer 1",
+		"name": "IBM Server",
 		"operatingSystem": "Windows",
 		"collapsedSpecifications": "8x16x500",
 		"software": [
-			{
-				"id": 1,
-				"name": "Adobe Full Suite"
-			},
 			{
 				"id": 2,
 				"name": "Photoshop"
@@ -24,21 +20,21 @@ export default [
 		],
 		"availabilityDates": [
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599598802000,
 				"availabilityTime": {
 					"value": 5.5,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1592598800000,
 				"availabilityTime": {
 					"value": 7,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599598800020,
 				"availabilityTime": {
 					"value": 9,
 					"scale": "hours"
@@ -48,14 +44,10 @@ export default [
 	},
 	{
 		"id": "1",
-		"name": "Computer 2",
+		"name": "MSI GH750",
 		"operatingSystem": "Windows",
 		"collapsedSpecifications": "16x32x1000",
 		"software": [
-			{
-				"id": 1,
-				"name": "Adobe Full Suite"
-			},
 			{
 				"id": 2,
 				"name": "Photoshop"
@@ -71,29 +63,25 @@ export default [
 			{
 				"id": 6,
 				"name": "Adobe XD"
-			},
-			{
-				"id": 11,
-				"name": "Solidworks"
 			}
 		],
 		"availabilityDates": [
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599598802300,
 				"availabilityTime": {
 					"value": 5,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599528800002,
 				"availabilityTime": {
 					"value": 7,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599398800004,
 				"availabilityTime": {
 					"value": 9,
 					"scale": "hours"
@@ -103,7 +91,7 @@ export default [
 	},
 	{
 		"id": "2",
-		"name": "Computer 3",
+		"name": "Dell G7",
 		"operatingSystem": "Linux",
 		"collapsedSpecifications": "16x32x500",
 		"software": [
@@ -126,21 +114,21 @@ export default [
 		],
 		"availabilityDates": [
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599598805000,
 				"availabilityTime": {
 					"value": 4.5,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDate": 1599591600000,
+				"scheduledDateInMilis": 1599591650000,
 				"availabilityTime": {
 					"value": 3,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDate": 1600182000000,
+				"scheduledDateInMilis": 1600182000005,
 				"availabilityTime": {
 					"value": 9,
 					"scale": "hours"
@@ -150,7 +138,7 @@ export default [
 	},
 	{
 		"id": "3",
-		"name": "Computer 4",
+		"name": "AWS Server",
 		"operatingSystem": "Windows",
 		"collapsedSpecifications": "16x32x1000",
 		"software": [
@@ -181,21 +169,21 @@ export default [
 		],
 		"availabilityDates": [
 			{
-				"scheduledDateInMilis": 1599598800000,
+				"scheduledDateInMilis": 1599598807000,
 				"availabilityTime": {
 					"value": 4.5,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDate": 1599591600000,
+				"scheduledDateInMilis": 1599591670000,
 				"availabilityTime": {
 					"value": 3,
 					"scale": "hours"
 				}
 			},
 			{
-				"scheduledDate": 1600182000000,
+				"scheduledDateInMilis": 1670182000000,
 				"availabilityTime": {
 					"value": 9,
 					"scale": "hours"

@@ -1,5 +1,4 @@
 import React from 'react'
-import muckComputers from '../../muckData/computers'
 
 import BannerFindTeam from '../../components/BannerFindTeam'
 import Equipos from '../../components/Equipos'
@@ -12,14 +11,12 @@ import { Link } from 'wouter'
 
 export default function Equipment() {
   const [showFilters, setShowFilter] = React.useState(false)
-  const [showModal, setShowModal] = React.useState(true)
+  const [showModal, setShowModal] = React.useState(false)
   const [projects, setProjects] = React.useState(undefined)
 
   React.useEffect( _ => {
     //haveProjects? setProjects([]) : setProjects(null)
-    setProjects(null)
-    console.log(muckComputers)
-  })
+  }, []) //eslint-disable-line
 
   const onCloseModal = _ => {
     projects? setShowModal(false) : alert('Create project')
