@@ -1,7 +1,8 @@
-import React from 'react';
-import Home from './containers/Home';
+import React from 'react'
+import Home from './containers/Home'
 import Auth from './containers/Auth'
-import Header from './components/Header';
+import Header from './components/Header'
+import Equipment from './containers/Equipment'
 
 import { Switch, Route } from 'wouter'
 
@@ -14,7 +15,8 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/Log" component={Auth} />
+        <Route path="/equipment" component={Equipment} />
+        <Route path="/log" component={Auth} />
       </Switch>
     </div>
   );
