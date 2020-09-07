@@ -1,4 +1,5 @@
 import React from 'react'
+import muckComputers from '../../muckData/computers'
 
 import BannerFindTeam from '../../components/BannerFindTeam'
 import Equipos from '../../components/Equipos'
@@ -17,6 +18,7 @@ export default function Equipment() {
   React.useEffect( _ => {
     //haveProjects? setProjects([]) : setProjects(null)
     setProjects(null)
+    console.log(muckComputers)
   })
 
   const onCloseModal = _ => {
