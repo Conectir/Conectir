@@ -1,6 +1,7 @@
 import React from 'react'
 import Arrow from '../Arrow'
 import { ACTIONS, useEquipmentDispatch } from '../../contexts/Equipment'
+import PROGRAMS from '../../muckData/programs'
 import './index.scss'
 
 const Filters = () => {
@@ -9,16 +10,39 @@ const Filters = () => {
   const [showProcesador, setShowProcesador] = React.useState(true)
   const dispatch = useEquipmentDispatch()
 
-  const click = _ => {
+  const timeFilter = e => {
     dispatch({
-      type: ACTIONS.FILTER_BY_TIME
+      type: ACTIONS.FILTER_BY_TIME,
+      value: +e.target.value
     })
+  }
+
+  const programFilter = id => {
+    dispatch({
+      type: ACTIONS.FILTER_BY_PROGRAM,
+      value: id
+    })
+  }
+
+  const programCheckBox = program => {
+    return (
+      <label
+        key={`${program.id}-option-${program.name}`}
+        className='filters__programs__item'
+        htmlFor={`${program.id}-option`}
+        onClick={ _ => programFilter(program.id) }
+      >
+        <input type='checkbox' id={`${program.id}-option`} name={`${program.name}`} />
+        <img src={`${process.env.PUBLIC_URL}/programas/${program.img}`} alt={`Opción: ${program.name}`} />
+        <span>{program.name}</span>
+      </label>
+    )
   }
 
   return (
     <aside className={'filters'}>
       <article className='filters__header'>
-        <h1 className='title' onClick={click}>Filtro</h1>
+        <h1 className='title' >Filtro</h1>
         <p className='filters__header__clean'>Limpiar</p>
       </article>
 
@@ -36,7 +60,7 @@ const Filters = () => {
 
       <label className='filters__time filter_label' htmlFor='timeFilter'>
         <h2 className='subtitle'>Tiempo</h2>
-        <input type='range' min='1' max='10' id='timeFilter' className='slider' />
+        <input type='range' min='1' max='10' id='timeFilter' className='slider' onChange={timeFilter} />
         <div className='filters__time__hour'>
           <p>1h</p>
           <p>10h</p>
@@ -46,53 +70,7 @@ const Filters = () => {
       <div className='filters__programs'>
         <h2 className='subtitle'>Programas</h2>
         <form>
-          <label className='filters__programs__item' htmlFor='illustrator-option'>
-            <input type='checkbox' id="illustrator-option" name="illustrator" />
-            <img src={process.env.PUBLIC_URL + '/programas/Illustrator.png'} alt='Opción: Illustrator' />
-            <span>Illustrator</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='Photoshop-option'>
-            <input type='checkbox' id="Photoshop-option" name="Photoshop" />
-            <img src={process.env.PUBLIC_URL + '/programas/Photoshop.png'} alt='Opción: Photoshop' />
-            <span>Photoshop</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='Animate-option'>
-            <input type='checkbox' id="Animate-option" name="Animate" />
-            <img src={process.env.PUBLIC_URL + '/programas/Animate.png'} alt='Opción: Animate' />
-            <span>Animate</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='After-option'>
-            <input type='checkbox' id="After-option" name="After" />
-            <img src={process.env.PUBLIC_URL + '/programas/After.png'} alt='Opción: After Effects' />
-            <span>After Effects</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='Premiere-option'>
-            <input type='checkbox' id="Premiere-option" name="Premiere" />
-            <img src={process.env.PUBLIC_URL + '/programas/Premiere.png'} alt='Opción: Premiere' />
-            <span>Premiere</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='AdobeXD-option'>
-            <input type='checkbox' id="AdobeXD-option" name="AdobeXD" />
-            <img src={process.env.PUBLIC_URL + '/programas/XD.png'} alt='Opción: Adobe XD' />
-            <span>Adobe XD</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='Media-option'>
-            <input type='checkbox' id="Media-option" name="Media" />
-            <img src={process.env.PUBLIC_URL + '/programas/Media.png'} alt='Opción: Media Encoder' />
-            <span>Media Encoder</span>
-          </label>
-
-          <label className='filters__programs__item' htmlFor='Lightroom-option'>
-            <input type='checkbox' id="Lightroom-option" name="Lightroom" />
-            <img src={process.env.PUBLIC_URL + '/programas/Lightroom.png'} alt='Opción: Lightroom' />
-            <span>Lightroom</span>
-          </label>
+          {PROGRAMS.map(programCheckBox)}
         </form>
       </div>
 

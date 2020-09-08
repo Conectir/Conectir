@@ -1,11 +1,12 @@
 import makeStore from './makeStore'
 import data from '../muckData/computers'
 
-export const INITIAL_EQUIPMENT = data
+export const INITIAL_EQUIPMENT = [...data]
 
 export const ACTIONS = {
-    FILTER_BY_TIME: 0,
-    RESET_STATE: 1
+    RESET_STATE: 0,
+    FILTER_BY_TIME: 1,
+    FILTER_BY_PROGRAM: 2
 }
 
 const EquipmentReducer = (state, action) => {
@@ -14,7 +15,19 @@ const EquipmentReducer = (state, action) => {
             return INITIAL_EQUIPMENT
 
         case ACTIONS.FILTER_BY_TIME:
-            return [state[0]]
+            return state.map(comp => {
+                comp.availabilityDates = comp.availabilityDates.filter(date =>
+                    date.availabilityTime.value < action.value
+                )
+                return comp
+            }).filter(comp => comp.availabilityDates.length > 0)
+
+        case ACTIONS.FILTER_BY_PROGRAM:
+            return state.filter(comp =>
+                comp.software.some(soft =>
+                    soft.id === action.value
+                )
+            )
 
         default:
             throw new Error('unKnown action¡', action)

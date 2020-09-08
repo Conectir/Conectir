@@ -3,7 +3,7 @@ import React from 'react'
 export default function makeStore({ initialState, guivenReducer, key }) {
     const dispatchContext = React.createContext()
     const storeContext = React.createContext()
-    const reducer = guivenReducer
+    let reducer = guivenReducer
 
     if(key){
         try {

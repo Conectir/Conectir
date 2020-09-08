@@ -1,39 +1,18 @@
 import React from 'react';
 import Arrow from '../../Arrow';
+import { DAYS, MONTHS, OP_IMGS } from '../../../assets/utilities'
+import PROGRAMS from '../../../muckData/programs'
 
 import './index.scss';
-
-const DAYS = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado']
-const MONTHS = ['Enero', 'Febreo', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-const PROGRAMS_IMGS = {
-  1: 'Illustrator.png', //"Adobe Full Suite",
-  2: 'Photoshop.png',
-  3: 'Illustrator.png',
-  4: 'Premiere.png',
-  6: "XD.png",
-  10: 'Illustrator.png', //"Maya",
-  11: 'Illustrator.png', //"Solidworks",
-  12: 'Illustrator.png', //"3DS Max",
-  13: 'Illustrator.png', //"Android Studio",
-  14: 'Illustrator.png', //"Eclipse",
-  15: 'Illustrator.png', //"Visual Studio",
-  16: 'Illustrator.png', //"MySQL",
-  19: 'Illustrator.png', //"MongoDB",
-  20: 'Illustrator.png', //"Hadoop"
-}
-
-const OP_IMGS = {
-  Windows: 'XD.png',
-  Linux: 'Media.png'
-}
 
 export default function Equipo({ data }) {
   const { name, collapsedSpecifications, availabilityDates, operatingSystem, software } = data
   const scheduleRef = React.useRef()
 
   const getSoftwareImg = sf => {
+    sf = PROGRAMS.filter( p => p.id === sf.id)[0]
     return <div className='Equipo__body__header__logos__item' key={sf.id}>
-      <img alt={sf.name} src={`${process.env.PUBLIC_URL}${/programas/}${PROGRAMS_IMGS[sf.id]}`} />
+      <img alt={sf.name} src={`${process.env.PUBLIC_URL}${/programas/}${sf.img}`} />
     </div>
   }
 
