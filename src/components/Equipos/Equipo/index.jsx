@@ -61,18 +61,9 @@ export default function Equipo({ data }) {
       </div>
     </div>
   }
-
-  const moveRight = _ => {
-    const step = scheduleRef.current.clientWidth / 2
-    scheduleRef.current.scrollBy({
-      top: 0,
-      left: -step,
-      behavior: 'smooth'
-    });
-  }
   
-  const moveLeft = _ => {
-    const step = scheduleRef.current.clientWidth / 2
+  const moveSchedule = val => {
+    const step = (scheduleRef.current.clientWidth / 2) * val
     scheduleRef.current.scrollBy({
       top: 0,
       left: step,
@@ -103,8 +94,8 @@ export default function Equipo({ data }) {
         <div className='Equipo__schedule__header'>
           <h1 className='Equipo__schedule__header__title'>HORARIO</h1>
           <div className='Equipo__schedule__header__btns'>
-            <div onClick={moveRight}><Arrow /></div>
-            <div onClick={moveLeft}><Arrow /></div>
+            <div onClick={_=>moveSchedule(-1)}><Arrow /></div>
+            <div onClick={_=>moveSchedule(1)}><Arrow /></div>
           </div>
         </div>
 

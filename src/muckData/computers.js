@@ -1,3 +1,4 @@
+//needed information = área de estudio, almacenamiento, nucleos, Vprocesador, Ram, TarjetaGráfica
 export default [
 	{
 		"id": "0",

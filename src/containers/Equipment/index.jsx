@@ -1,25 +1,24 @@
 import React from 'react'
-
 import BannerFindTeam from '../../components/BannerFindTeam'
+import ModalPortal from '../../components/Modal'
 import Equipos from '../../components/Equipos'
 import Filters from '../../components/Filters'
 
-import './index.scss'
-import ModalPortal from '../../components/Modal'
+import { EquipmentProvider } from '../../contexts/Equipment'
 import { Link } from 'wouter'
 
+import './index.scss'
 
 export default function Equipment() {
-  const [showFilters, setShowFilter] = React.useState(false)
   const [showModal, setShowModal] = React.useState(false)
   const [projects, setProjects] = React.useState(undefined)
 
-  React.useEffect( _ => {
+  React.useEffect(_ => {
     //haveProjects? setProjects([]) : setProjects(null)
   }, []) //eslint-disable-line
 
   const onCloseModal = _ => {
-    projects? setShowModal(false) : alert('Create project')
+    projects ? setShowModal(false) : alert('Create project')
   }
 
   const handleclick = _ => {
@@ -29,12 +28,15 @@ export default function Equipment() {
 
   return (
     <section className='Equipment'>
-      <main>
-        <BannerFindTeam />
-        <Equipos activeFilters={showFilters} toggleActiveFilters={setShowFilter} />
-      </main>
 
-      <Filters activeFilters={showFilters} toggleActiveFilters={setShowFilter} />
+      <EquipmentProvider>
+        <main>
+          <BannerFindTeam />
+          <Equipos />
+        </main>
+
+        <Filters />
+      </EquipmentProvider>
 
       <ModalPortal show={showModal} onclose={onCloseModal}>
         <h3 className='title'>¡Espera!</h3>
