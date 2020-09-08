@@ -1,6 +1,6 @@
 import React from 'react'
 import BannerFindTeam from '../../components/BannerFindTeam'
-import ModalPortal from '../../components/Modal'
+import Modal from '../../components/Modal'
 import Equipos from '../../components/Equipos'
 import Filters from '../../components/Filters'
 
@@ -10,7 +10,7 @@ import { Link } from 'wouter'
 import './index.scss'
 
 export default function Equipment() {
-  const [showModal, setShowModal] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(true)
   const [projects, setProjects] = React.useState(undefined)
 
   //React.useEffect( () => { haveProjects? setProjects([]) : setProjects(null) }, []) 
@@ -36,12 +36,12 @@ export default function Equipment() {
         <Filters />
       </EquipmentProvider>
 
-      <ModalPortal show={showModal} onclose={onCloseModal}>
+      <Modal show={showModal} onclose={onCloseModal}>
         <h3 className='title'>¡Espera!</h3>
         <p>Antes de agendar un equipo, debes crear un proyecto.</p>
         <button className='blue' onClick={handleclick}>Crear proyecto</button>
         <Link to='/'><small>Ir a inicio</small></Link>
-      </ModalPortal>
+      </Modal>
     </section>
   )
 }

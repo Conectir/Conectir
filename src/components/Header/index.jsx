@@ -58,7 +58,7 @@ const Header = () => {
           Proyectos
         </Link>
 
-        <Link href='/equipment' className={getClassName('equipos')}>
+        <Link href='/equipment' className={getClassName('equipment')}>
           <img src={process.env.PUBLIC_URL + '/iconos/Equipo.svg'} alt='Equipo' />
           Equipo
         </Link>

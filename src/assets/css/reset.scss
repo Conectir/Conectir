@@ -220,6 +220,10 @@ button {
 	cursor: pointer;
 }
 
+button:focus{
+	outline: none;
+}
+
 button.border {
 	border: solid 2px var(--color-blue);
 	background-color: white;

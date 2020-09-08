@@ -99,7 +99,7 @@
       width: 100%;
       position: relative;
       scroll-behavior: smooth;
-      
+
       section {
         scroll-behavior: smooth;
         overflow: hidden;
@@ -114,11 +114,13 @@
       &__date {
         min-width: 50%;
         padding: 10px;
-
+        
         p {
           margin-bottom: 12px;
         }
+        
         &__hour {
+          cursor: pointer;
           border: solid 1px #d8d8d8;
           border-radius: 8px;
           background-color: var(--color-white);
@@ -127,12 +129,21 @@
           align-items: center;
           justify-content: center;
           padding: 12px 10px;
+
+          &:hover {
+            background-color: #e2e2e2;
+          }
+        }
+
+        &__hour.selected {
+          background-color: #333333;
+          color: var(--color-white);
         }
       }
     }
   }
 
-  &>button {
+  & > button {
     background: #f0f0f0;
     border-radius: 8px;
     border: none;
@@ -146,8 +157,13 @@
     transition: all 0.4s;
   }
 
-  &>button:hover {
+  & > button:hover {
     background-color: var(--color-blue);
+    color: var(--color-white);
+  }
+
+  & > button.selected {
+    background-color: #30C5FF;
     color: var(--color-white);
   }
 }
