@@ -33,8 +33,10 @@ export default function Equipo({ data, callback }) {
   }
 
   const handleSelect = _ => {
-    if(dateSelected){
-      callback({ data, dateSelected })
+    if (dateSelected) {
+      let temp = { ...data }
+      temp.availabilityDates = [dateSelected.val]
+      callback(temp)
     }
   }
 
@@ -50,12 +52,27 @@ export default function Equipo({ data, callback }) {
           <h1 className='Equipo__body__header__title'>{name}</h1>
           <p className='Equipo__body__header__ghz'>{getOpImg()} {collapsedSpecifications}</p>
 
-          <div className='Equipo__body__header__logos'>
-            {software.map(getSoftwareImg)}
-          </div>
+          {callback ?
+            <div className='Equipo__body__header__logos'>
+              {software.map(getSoftwareImg)}
+            </div>
+            :
+            <>
+              <p>Ram: 8GB</p>
+              <p>GPU: 4GB</p>
+            </>
+          }
 
         </div>
       </div>
+
+      {!callback && <>
+        <h3>Programas</h3>
+        <div className='Equipo__body__header__logos'>
+          {software.map(getSoftwareImg)}
+        </div>
+      </>}
+
 
       <div className='Equipo__schedule'>
         <div className='Equipo__schedule__header'>
@@ -66,23 +83,35 @@ export default function Equipo({ data, callback }) {
           </div>
         </div>
 
+        {!callback && <h3>Detalles</h3>}
+
         <div className='Equipo__schedule__body'>
-          <section ref={scheduleRef}>{
-            availabilityDates.map((scheduleDate, index) =>
-              <GetScheduleDate
-                key={scheduleDate.scheduledDateInMilis}
-                scheduleDate={scheduleDate}
-                isSelected={ index === dateSelected?.index }
-                callback={ val => setDateSelected(val? { val, index } : null) }
-              />
-            )
-          }</section>
+          <section ref={scheduleRef}>
+            {
+              availabilityDates.map((scheduleDate, index) =>
+                <GetScheduleDate
+                  key={scheduleDate.scheduledDateInMilis}
+                  scheduleDate={scheduleDate}
+                  isSelected={index === dateSelected?.index}
+                  callback={val => setDateSelected(val ? { val, index } : null)}
+                />
+              )
+            }
+            {!callback &&
+              <div className="Equipo__proyecto">
+                <p>Proyecto definido</p>
+                <span>DEFAULT</span>
+              </div>
+            }
+          </section>
         </div>
       </div>
 
-      <button
-        onClick={handleSelect}
-      >Seleccionar</button>
+      {callback &&
+        <button
+          onClick={handleSelect}
+        >Seleccionar</button>
+      }
     </div>
   )
 }

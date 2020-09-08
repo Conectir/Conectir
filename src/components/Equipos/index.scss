@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: flex-start;
 
-  &__header{ 
+  &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,20 +26,34 @@
         margin-right: 12px;
       }
     }
-
   }
 
   &__body {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(300px, auto-fit) );
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto-fit));
     grid-gap: 36px;
-    transition: all .4s;
+    transition: all 0.4s;
     margin: auto;
   }
 }
 
-@media only screen and (min-width:600px){
+.Modal section > div:not(.Equipo) {
+  width: 100%;
+  margin-bottom: 12px;
+
+  button {
+    width: 48%;
+    margin: 0;
+    display: inline-block;
+  }
+
+  button + button {
+    margin-left: 4%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
   .Equipos {
     &__header {
       &__filters {
@@ -49,10 +63,10 @@
   }
 }
 
-@media only screen and (min-width:1000px) {
+@media only screen and (min-width: 1000px) {
   .Equipos {
     &__body {
-      grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       grid-column-gap: 36px;
     }
   }

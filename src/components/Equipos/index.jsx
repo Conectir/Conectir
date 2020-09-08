@@ -2,10 +2,12 @@ import React from 'react'
 import Equipo from './Equipo'
 import Modal from '../Modal'
 import { useEquipment } from '../../contexts/Equipment'
+import { useLocation } from 'wouter'
 
 import './index.scss'
 
 const Equipos = () => {
+  const [, setLocation] = useLocation()
   const computers = useEquipment()
   const [selected, setSelected] = React.useState(null)
 
@@ -21,13 +23,22 @@ const Equipos = () => {
             key={comp.id}
             data={comp}
             callback={setSelected}
-            />
+          />
         )}
       </article>
     </section>
 
     <Modal show={selected} onclose={_ => setSelected(null)}>
-          <h3>confirmate</h3>
+      <Equipo data={selected} />
+      <div>
+        <button onClick={_ => setSelected(null)} >Cancelar</button>
+        <button
+          className='border'
+          onClick={_ => {
+            setLocation('/')
+          }}
+        >Agendar</button>
+      </div>
     </Modal>
   </>)
 }

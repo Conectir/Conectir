@@ -10,7 +10,7 @@ import { Link } from 'wouter'
 import './index.scss'
 
 export default function Equipment() {
-  const [showModal, setShowModal] = React.useState(true)
+  const [showModal, setShowModal] = React.useState(false)
   const [projects, setProjects] = React.useState(undefined)
 
   //React.useEffect( () => { haveProjects? setProjects([]) : setProjects(null) }, []) 
