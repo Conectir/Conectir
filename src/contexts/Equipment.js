@@ -1,11 +1,20 @@
 import makeStore from './makeStore'
-import computers from '../muckData/computers'
+import data from '../muckData/computers'
+
+export const INITIAL_EQUIPMENT = data
+
+export const ACTIONS = {
+    FILTER_BY_TIME: 0,
+    RESET_STATE: 1
+}
 
 const EquipmentReducer = (state, action) => {
-    console.log({state, action})
     switch (action.type) {
-        case 'add':
-            return [...state, action.value]
+        case ACTIONS.RESET_STATE:
+            return INITIAL_EQUIPMENT
+
+        case ACTIONS.FILTER_BY_TIME:
+            return [state[0]]
 
         default:
             throw new Error('unKnown action¡', action)
@@ -16,6 +25,10 @@ const [
     EquipmentProvider,
     useEquipment,
     useEquipmentDispatch
-] = makeStore( EquipmentReducer, computers, 'EquipmentStore' )
+] = makeStore({
+    initialState: data,
+    guivenReducer: EquipmentReducer,
+    //key: 'EquipmentStore'
+})
 
 export { EquipmentProvider, useEquipment, useEquipmentDispatch }

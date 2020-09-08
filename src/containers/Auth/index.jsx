@@ -8,7 +8,7 @@ const USERMOCK = { name: "mock", lastName: "last", country: "Colombia", city: "C
 
 export default function Auth() {
 
-    const [isSingUp, setSignUp] = React.useState(true)
+    const [isSingUp, setSignUp] = React.useState(false)
 
     const callback = action => {
         switch (action) {

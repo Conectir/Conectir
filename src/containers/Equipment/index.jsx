@@ -13,9 +13,7 @@ export default function Equipment() {
   const [showModal, setShowModal] = React.useState(false)
   const [projects, setProjects] = React.useState(undefined)
 
-  React.useEffect(_ => {
-    //haveProjects? setProjects([]) : setProjects(null)
-  }, []) //eslint-disable-line
+  //React.useEffect( () => { haveProjects? setProjects([]) : setProjects(null) }, []) 
 
   const onCloseModal = _ => {
     projects ? setShowModal(false) : alert('Create project')

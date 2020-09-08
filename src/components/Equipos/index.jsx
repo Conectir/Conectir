@@ -1,12 +1,11 @@
 import React from 'react'
 import Equipo from './Equipo'
-import { useEquipment, useEquipmentDispatch } from '../../contexts/Equipment'
+import { useEquipment } from '../../contexts/Equipment'
 
 import './index.scss'
 
 const Equipos = () => {
   const computers = useEquipment()
-  const dispatch = useEquipmentDispatch()
 
   return (
     <section className='Equipos'>

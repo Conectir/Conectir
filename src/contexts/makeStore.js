@@ -1,17 +1,20 @@
 import React from 'react'
 
-export default function makeStore(guivenReducer, initialState, key) {
+export default function makeStore({ initialState, guivenReducer, key }) {
     const dispatchContext = React.createContext()
     const storeContext = React.createContext()
+    const reducer = guivenReducer
 
-    try {
-        initialState = JSON.parse(localStorage.getItem(key)) || initialState
-    } catch {}
-
-    const reducer = (state, action) => {
-        const newState = guivenReducer(state, action)
-        localStorage.setItem(key, JSON.stringify(newState))
-        return newState
+    if(key){
+        try {
+            initialState = JSON.parse(localStorage.getItem(key)) || initialState
+        } catch {}
+    
+        reducer = (state, action) => {
+            const newState = guivenReducer(state, action)
+            localStorage.setItem(key, JSON.stringify(newState))
+            return newState
+        }
     }
 
     const StoreProvider = ({ children }) => {

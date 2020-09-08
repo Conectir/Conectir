@@ -1,17 +1,24 @@
-import React from 'react';
-import './index.scss';
-import Arrow from '../Arrow';
+import React from 'react'
+import Arrow from '../Arrow'
+import { ACTIONS, useEquipmentDispatch } from '../../contexts/Equipment'
+import './index.scss'
 
 const Filters = () => {
+  const [showAdvance, setShowAdvance] = React.useState(false)
+  const [showNucleos, setShowNucleos] = React.useState(true)
+  const [showProcesador, setShowProcesador] = React.useState(true)
+  const dispatch = useEquipmentDispatch()
 
-  const [showAdvance, setShowAdvance] = React.useState(false);
-  const [showNucleos, setShowNucleos] = React.useState(true);
-  const [showProcesador, setShowProcesador] = React.useState(true);
+  const click = _ => {
+    dispatch({
+      type: ACTIONS.FILTER_BY_TIME
+    })
+  }
 
   return (
     <aside className={'filters'}>
       <article className='filters__header'>
-        <h1 className='title'>Filtro</h1>
+        <h1 className='title' onClick={click}>Filtro</h1>
         <p className='filters__header__clean'>Limpiar</p>
       </article>
 
