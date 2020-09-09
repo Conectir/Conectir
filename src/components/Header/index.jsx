@@ -2,15 +2,14 @@ import React from 'react'
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import Modal from 'react-modal'
+import User from '../User'
 
-import { useUser } from '../../contexts/User'
 import { Link, useLocation } from 'wouter'
 
 import './index.scss'
 import './MenuResponsive.scss'
 
 const Header = () => {
-  const user = useUser()
   const location = useLocation()[0]
   const [showResponsive, setShowResponsive] = React.useState(false);
   const [isHidden, setHidden] = React.useState(false)
@@ -64,16 +63,7 @@ const Header = () => {
         </Link>
       </nav>
 
-      <div className='header__user'>
-        <Link to='/log'>
-          {
-            user
-              ? < img className='header__user__img' src={process.env.PUBLIC_URL + '/img/' + user.img} alt="user" />
-              : <p>Inicia sesión</p>
-          }
-        </Link>
-        <button className='header__user__btn' disabled>Conectar</button>
-      </div>
+      <User />
 
       <div className='header__responsive' onClick={() => { setShowResponsive(!showResponsive) }}>
         <MenuIcon active={showResponsive} />

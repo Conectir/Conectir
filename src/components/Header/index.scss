@@ -51,36 +51,6 @@
     }
   }
 
-  &__user {
-    display: none;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-
-    &__img {
-      width: 40px;
-      height: 40px;
-      margin-right: 12px;
-    }
-
-    &__img.unactive {
-      opacity: .2;
-      cursor: pointer;
-    }
-
-    &__btn {
-      background-color: var(--color-gray);
-      border: none;
-      display: block;
-      height: 40px;
-      padding: 0 20px;
-      font-weight: bold;
-      font-size: 18px;
-      color: var(--color-white);
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  }
   &__responsive {
     display: flex;
   }

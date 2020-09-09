@@ -24,7 +24,13 @@ const userReducer = (state, action) => {
             }
 
         case ACTIONS.SIGNING:
-            return {...action.value, img: 'boy.png'}
+            return {
+                ...action.value,
+                img: 'boy.png',
+                appointments: [],
+                events: [],
+                remainders: []
+            }
 
         case ACTIONS.LOGGING_OUT:
             return USER_STATES.UNLOGGED

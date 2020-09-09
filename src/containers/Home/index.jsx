@@ -1,17 +1,20 @@
 import React from 'react'
-import EVENTS from '../../muckData/events'
 import Appointments from '../../components/Appointments'
 import Remainders from '../../components/Remainders'
 import Event from '../../components/Event'
-import './index.scss'
 import Agenda from '../../components/Agenda'
+import { useUser } from '../../contexts/User'
+import './index.scss'
 
 export default function Home() {
+  const user = useUser()
+  const events = user?.events || []
+
   return (
     <section className='Home'>
       <article>
         <Appointments />
-        {EVENTS.map(evt => <Event key={evt.date} title={evt.title} milisDate={evt.date} duration={evt.duration} />)}
+        {events.map(evt => <Event key={evt.date} title={evt.title} milisDate={evt.date} duration={evt.duration} />)}
       </article>
       <article>
         <h1>Blog</h1>

@@ -9,6 +9,7 @@ export default {
     password: "2n439n3",
     study: "Ciencias Sociales",
     terms: true,
+    
     img: 'girl.png',
     appointments: [],
     events,
