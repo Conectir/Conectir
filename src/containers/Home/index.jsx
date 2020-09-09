@@ -4,6 +4,7 @@ import Appointments from '../../components/Appointments'
 import Remainders from '../../components/Remainders'
 import Event from '../../components/Event'
 import './index.scss'
+import Agenda from '../../components/Agenda'
 
 export default function Home() {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
 
       </article>
       <article>
+        <Agenda />
         <Remainders />
       </article>
     </section>
