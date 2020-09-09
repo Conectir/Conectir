@@ -1,6 +1,7 @@
 import React from 'react';
+import ScheduleDate from './ScheduleDate';
 import Arrow from '../../Arrow';
-import { DAYS, MONTHS, OP_IMGS } from '../../../assets/utilities'
+import { OP_IMGS } from '../../../assets/utilities'
 import PROGRAMS from '../../../muckData/programs'
 
 import './index.scss';
@@ -89,7 +90,7 @@ export default function Equipo({ data, callback }) {
           <section ref={scheduleRef}>
             {
               availabilityDates.map((scheduleDate, index) =>
-                <GetScheduleDate
+                <ScheduleDate
                   key={scheduleDate.scheduledDateInMilis}
                   scheduleDate={scheduleDate}
                   isSelected={index === dateSelected?.index}
@@ -112,30 +113,6 @@ export default function Equipo({ data, callback }) {
           onClick={handleSelect}
         >Seleccionar</button>
       }
-    </div>
-  )
-}
-
-function GetScheduleDate({ scheduleDate, isSelected, callback }) {
-  const date = new Date(scheduleDate.scheduledDateInMilis)
-  const endingDate = new Date(scheduleDate.scheduledDateInMilis + (scheduleDate.availabilityTime.value * 3600000))
-
-  const getTime = date => {
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-
-    return `${hours < 10 ? "0" : ""}${hours}:${minutes < 10 ? "0" : ""}${minutes}`
-  }
-
-  return (
-    <div className='Equipo__schedule__body__date' >
-      <p>{MONTHS[date.getMonth()]},<br /> {DAYS[date.getDay()]} {date.getDate()}</p>
-      <div
-        className={`Equipo__schedule__body__date__hour ${isSelected ? 'selected' : ''}`}
-        onClick={_ => callback(isSelected ? null : scheduleDate)}
-      >
-        <span>{getTime(date)}</span> - <span>{getTime(endingDate)}</span>
-      </div>
     </div>
   )
 }

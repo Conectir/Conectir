@@ -1,10 +1,17 @@
 import React from 'react'
+import Appointments from '../../components/Appointments'
+import EVENTS from '../../muckData/events'
 import './index.scss'
+import Event from '../../components/Event'
 
 export default function Home() {
   return (
     <section className='Home'>
-      <article></article>
+      <article>
+        <h1>Próximas citas</h1>
+        <Appointments />
+        { EVENTS.map( evt => <Event key={evt.date} title={evt.title} milisDate={evt.date} duration={evt.duration} />) }
+      </article>
       <article>
         <h1>Blog</h1>
 
