@@ -10,7 +10,7 @@ import { Link } from 'wouter'
 import './index.scss'
 
 export default function Equipment() {
-  const [showModal, setShowModal] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(true)
   const [projects, setProjects] = React.useState(undefined)
 
   //React.useEffect( () => { haveProjects? setProjects([]) : setProjects(null) }, []) 
@@ -38,6 +38,7 @@ export default function Equipment() {
 
       <Modal show={showModal} onclose={onCloseModal}>
         <h3 className='title'>¡Espera!</h3>
+        <img src={process.env.PUBLIC_URL + '/img/alert.png'} alt="alert" />
         <p>Antes de agendar un equipo, debes crear un proyecto.</p>
         <button className='blue' onClick={handleclick}>Crear proyecto</button>
         <Link to='/'><small>Ir a inicio</small></Link>

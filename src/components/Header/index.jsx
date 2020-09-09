@@ -65,7 +65,7 @@ const Header = () => {
       </nav>
 
       <div className='header__user'>
-        <div className='header__user__img'></div>
+        <img className='header__user__img' src={process.env.PUBLIC_URL + '/img/girl.png'} alt="user" />
         <button className='header__user__btn' disabled>Conectar</button>
       </div>
 

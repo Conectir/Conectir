@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    position: relative;
 
     & > article {
         padding: 15px;
@@ -22,6 +23,8 @@
 
     article:first-of-type {
         width: 20vw;
+        position: sticky;
+        top: 60px;
     }
 
     article:nth-child(2) {
