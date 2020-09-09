@@ -94,7 +94,10 @@ export default function Equipo({ data, callback }) {
                   key={scheduleDate.scheduledDateInMilis}
                   scheduleDate={scheduleDate}
                   isSelected={index === dateSelected?.index}
-                  callback={val => setDateSelected(val ? { val, index } : null)}
+                  callback={callback
+                    ? (val => setDateSelected(val ? { val, index } : null))
+                    : false
+                  }
                 />
               )
             }

@@ -11,7 +11,9 @@ export default function ScheduleDate({ scheduleDate, isSelected, callback }) {
             <p>{getMonth(date)},<br /> {getDay(date)} {date.getDate()}</p>
             <div
                 className={`ScheduleDate__hour ${isSelected ? 'selected' : ''}`}
-                onClick={_ => callback(isSelected ? null : scheduleDate)}
+                onClick={ _ => {
+                    callback && callback(isSelected ? null : scheduleDate)
+                }}
             >
                 <span>{getTime(date)}</span> - <span>{getTime(endingDate)}</span>
             </div>

@@ -63,6 +63,11 @@
       margin-right: 12px;
     }
 
+    &__img.unactive {
+      opacity: .2;
+      cursor: pointer;
+    }
+
     &__btn {
       background-color: var(--color-gray);
       border: none;

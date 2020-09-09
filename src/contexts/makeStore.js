@@ -7,7 +7,7 @@ export default function makeStore({ initialState, guivenReducer, key }) {
 
     if(key){
         try {
-            initialState = JSON.parse(localStorage.getItem(key)) || initialState
+            initialState = JSON.parse(localStorage.getItem(key)) || initialState || null
         } catch {}
     
         reducer = (state, action) => {

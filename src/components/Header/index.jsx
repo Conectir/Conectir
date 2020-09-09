@@ -1,16 +1,16 @@
-import React from 'react';
-import Logo from '../Logo';
-import MenuIcon from '../MenuIcon';
+import React from 'react'
+import Logo from '../Logo'
+import MenuIcon from '../MenuIcon'
+import Modal from 'react-modal'
 
-import './index.scss';
-import './MenuResponsive.scss';
-
-import Modal from 'react-modal';
-
+import { useUser } from '../../contexts/User'
 import { Link, useLocation } from 'wouter'
 
-const Header = () => {
+import './index.scss'
+import './MenuResponsive.scss'
 
+const Header = () => {
+  const user = useUser()
   const location = useLocation()[0]
   const [showResponsive, setShowResponsive] = React.useState(false);
   const [isHidden, setHidden] = React.useState(false)
@@ -65,7 +65,13 @@ const Header = () => {
       </nav>
 
       <div className='header__user'>
-        <img className='header__user__img' src={process.env.PUBLIC_URL + '/img/girl.png'} alt="user" />
+        <Link to='/log'>
+          {
+            user
+              ? < img className='header__user__img' src={process.env.PUBLIC_URL + '/img/' + user.img} alt="user" />
+              : <p>Inicia sesión</p>
+          }
+        </Link>
         <button className='header__user__btn' disabled>Conectar</button>
       </div>
 
