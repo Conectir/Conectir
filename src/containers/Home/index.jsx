@@ -1,16 +1,16 @@
 import React from 'react'
-import Appointments from '../../components/Appointments'
 import EVENTS from '../../muckData/events'
-import './index.scss'
+import Appointments from '../../components/Appointments'
+import Remainders from '../../components/Remainders'
 import Event from '../../components/Event'
+import './index.scss'
 
 export default function Home() {
   return (
     <section className='Home'>
       <article>
-        <h1>Próximas citas</h1>
         <Appointments />
-        { EVENTS.map( evt => <Event key={evt.date} title={evt.title} milisDate={evt.date} duration={evt.duration} />) }
+        {EVENTS.map(evt => <Event key={evt.date} title={evt.title} milisDate={evt.date} duration={evt.duration} />)}
       </article>
       <article>
         <h1>Blog</h1>
@@ -36,7 +36,9 @@ export default function Home() {
         <img src={process.env.PUBLIC_URL + '/img/publicidad-1.jpg'} alt='publicidad' />
 
       </article>
-      <article></article>
+      <article>
+        <Remainders />
+      </article>
     </section>
   )
 }
